@@ -26,11 +26,6 @@ asmlinkage void linux_survey_TT(int pid, char *info)
 	const unsigned char *filename = NULL;
 	tpath = (char*)kmalloc(512,0);   // allocate memory
 	memset(tpath,'\0',512);  //set the value to memory
-	//pgd_t *pgd;
-	//pud_t *pud;
-	//pmd_t *pmd;
-	//pte_t *pte;
-	//unsigned long phy_address = 0;
 	unsigned long vm_start, vm_end;
 	unsigned long vm_address;
 	unsigned long pfn;
@@ -61,13 +56,13 @@ asmlinkage void linux_survey_TT(int pid, char *info)
 		    printk("\n");
 		  }
 
-		  printk("page frame of the interval : \n");
+		  printk("page frame of the interval : ");
 		  for(vm_address = point->vm_start; vm_address < point->vm_end; vm_address += 0x1000)
 		  {
 		    page = follow_page(point, vm_address, 0);
 		    if(page == NULL) continue;
 		    pfn = page_to_pfn(page);
-		    printk("0x%x ", pfn);
+		    printk("0x%x \n", pfn);
 		  }
 	      }
 	   }
