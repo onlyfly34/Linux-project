@@ -5,17 +5,20 @@
 #include <stdio.h>
 #include <unistd.h>
 #define  REPEAT_TIME      10
-#define  MEMORY_SIZE      700000
+#define  MEMORY_SIZE      900000
 
 main()
-{	/*int    i,pid;
+{	int    i,pid;
   	char   result[MEMORY_SIZE];
+	int    j;
   	// Definition of other varialbes you need to use in your program
 
   	// Your initialization code
+	//printf("%d \n", getpid());
   	printf("Input the PID of the process that you want to observe:");
   	scanf("%d", &pid);
-  	for(i=0;i<REPEAT_TIME;i++)
+	//printf("%d\n", pid);
+  	/*for(i=0;i<REPEAT_TIME;i++)
   	{
     		linux_survey_TT(pid,result);
 
@@ -24,13 +27,11 @@ main()
     		sleep(120);
   	}*/
     		// Code to report the final results
-    	int pause = 123;
-    	int pause1 = 212;
-    	printf("%d", getpid());
-    	scanf("%d",&pause1);
-    	syscall(351,getpid());
+	syscall(351, pid, result);
 
-	system("pause");
-	scanf("%d",&pause);
-	printf("A%d" ,pause1);
+	for(j = 0; result[j] != '\0';j++)
+	{
+	  printf("%c", result[j]);
+	}
+
 }
